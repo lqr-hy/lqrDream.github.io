@@ -148,6 +148,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数组高级reduce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/10/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7reduce/">数组高级reduce</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/10/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7reduce/" class="archive-article-date">
+  	<time datetime="2020-12-10T12:16:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、数组过滤-取出数组arr1中arr2数组不存在的数据"><a href="#1、数组过滤-取出数组arr1中arr2数组不存在的数据" class="headerlink" title="1、数组过滤 取出数组arr1中arr2数组不存在的数据"></a>1、数组过滤 取出数组arr1中arr2数组不存在的数据</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">difference</span>(<span class="params">arr = [], oarr = []</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">t, v</span>) =&gt;</span> (!oarr.includes(v) &amp;&amp; t.push(v), t), []);</span><br><span class="line">      &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(difference(arr1, arr2));　  <span class="comment">// 2,5　</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2、数组扁平"><a href="#2、数组扁平" class="headerlink" title="2、数组扁平"></a>2、数组扁平</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flats</span>(<span class="params">arr = []</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">t, v</span>) =&gt;</span> t.concat(<span class="built_in">Array</span>.isArray(v) ? flats(v) : v), []);</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="keyword">const</span> arr3 = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];conosle.log(flats(arr3)) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3、数组去重"><a href="#3、数组去重" class="headerlink" title="3、数组去重"></a>3、数组去重</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Uniq</span>(<span class="params">arr = []</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">t, v</span>) =&gt;</span> t.includes(v) ? t : [...t, v], []);</span><br><span class="line">       &#125;</span><br><span class="line"><span class="keyword">const</span> arr4 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(Uniq(arr5)); <span class="comment">//[1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4、统计数组成员个数"><a href="#4、统计数组成员个数" class="headerlink" title="4、统计数组成员个数"></a>4、统计数组成员个数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params">arr = []</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">t, v</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> t[v] = (t[v] || <span class="number">0</span>) + <span class="number">1</span>, t</span><br><span class="line">            &#125;, &#123;&#125;)</span><br><span class="line">        &#125;</span><br><span class="line"> <span class="keyword">const</span> arr5 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>]; <span class="comment">//&#123;0:1,1:2,2:3,3:4&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5、记录数组成员位置"><a href="#5、记录数组成员位置" class="headerlink" title="5、记录数组成员位置"></a>5、记录数组成员位置</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">position</span>(<span class="params">arr = [], val</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">t, v, i</span>) =&gt;</span> &#123;</span><br><span class="line">                v === val &amp;&amp; t.push(i);</span><br><span class="line">                <span class="keyword">return</span> t;</span><br><span class="line">            &#125;, []);</span><br><span class="line">        &#125;</span><br><span class="line">   <span class="keyword">const</span> arr6 =[<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">   <span class="built_in">console</span>.log(position(arr6,<span class="number">1</span>));  <span class="comment">// [1,2]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="6、字符串翻转"><a href="#6、字符串翻转" class="headerlink" title="6、字符串翻转"></a>6、字符串翻转</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseStr</span>(<span class="params">str = <span class="string">&#x27;&#x27;</span></span>) </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> str.split(<span class="string">&#x27;&#x27;</span>).reduceRight(<span class="function">(<span class="params">t, v</span>) =&gt;</span> t + v);</span><br><span class="line">       &#125;</span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefj&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reverseStr(str));  <span class="comment">// jfedcba</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="7、根据对象数组特定的属性值进行分组"><a href="#7、根据对象数组特定的属性值进行分组" class="headerlink" title="7、根据对象数组特定的属性值进行分组"></a>7、根据对象数组特定的属性值进行分组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">group</span>(<span class="params">arr = [], key</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> key ? arr.reduce(<span class="function">(<span class="params">t, v</span>) =&gt;</span> &#123;</span><br><span class="line">               !t[v[key]] &amp;&amp; (t[v[key]] = []);</span><br><span class="line">               t[v[key]].push(v);</span><br><span class="line">               <span class="keyword">return</span> t;</span><br><span class="line">           &#125;, &#123;&#125;) : &#123;&#125;</span><br><span class="line">       &#125;;</span><br><span class="line">  <span class="keyword">const</span> arr7 = [</span><br><span class="line">        &#123; <span class="attr">option</span>: <span class="string">&quot;A&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;HY&quot;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">option</span>: <span class="string">&quot;B&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;LQR&quot;</span>, <span class="attr">age</span>: <span class="number">24</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">option</span>: <span class="string">&quot;C&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;CJ&quot;</span>, <span class="attr">age</span>: <span class="number">23</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">option</span>: <span class="string">&quot;A&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;ZJY&quot;</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">option</span>: <span class="string">&quot;B&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;LY&quot;</span>, <span class="attr">age</span>: <span class="number">26</span> &#125;</span><br><span class="line">    ];</span><br><span class="line">  <span class="built_in">console</span>.log(group(arr7, <span class="string">&quot;option&quot;</span>)); <span class="comment">// &#123;A:Array(2),B:Array(2),C:Array(1)&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>　　</p>
+<h4 id="8、对数组成员包含的关键字进行统计"><a href="#8、对数组成员包含的关键字进行统计" class="headerlink" title="8、对数组成员包含的关键字进行统计"></a>8、对数组成员包含的关键字进行统计</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">keyword</span>(<span class="params">arr = [], keys = []</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> keys.reduce(<span class="function">(<span class="params">t, v</span>) =&gt;</span> &#123;</span><br><span class="line">              arr.some(<span class="function"><span class="params">w</span> =&gt;</span> w.includes(v)) &amp;&amp; t.push(v);</span><br><span class="line">              <span class="keyword">return</span> t;</span><br><span class="line">          &#125;, [])</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> text = [</span><br><span class="line">     <span class="string">&quot;汉皇重色思倾国，御宇多年求不得&quot;</span>,</span><br><span class="line">     <span class="string">&quot;杨家有女初长成，养在深闺人未识&quot;</span>,</span><br><span class="line">     <span class="string">&quot;天生丽质难自弃，一朝选在君王侧&quot;</span>,</span><br><span class="line">     <span class="string">&quot;回眸一笑百媚生，六宫粉黛无颜色&quot;</span>,</span><br><span class="line">     <span class="string">&quot;春寒赐浴华清池，温泉水滑洗凝脂&quot;</span>,</span><br><span class="line">     <span class="string">&quot;侍儿扶起娇无力，始是新承恩泽时&quot;</span></span><br><span class="line">      ];</span><br><span class="line"><span class="keyword">const</span> keyd = [<span class="string">&quot;重色&quot;</span>, <span class="string">&quot;深闺&quot;</span>, <span class="string">&quot;爱情&quot;</span>, <span class="string">&quot;君王&quot;</span>, <span class="string">&quot;一笑&quot;</span>, <span class="string">&quot;清池&quot;</span>, <span class="string">&quot;恩泽&quot;</span>];</span><br><span class="line"><span class="built_in">console</span>.log(keyword(text, keyd));  <span class="comment">// [&quot;重色&quot;,&quot;深闺&quot;,&quot;君王&quot;,&quot;一笑&quot;,&quot;清池&quot;,&quot;恩泽&quot;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="9、反对指定的对象的键值"><a href="#9、反对指定的对象的键值" class="headerlink" title="9、反对指定的对象的键值"></a>9、反对指定的对象的键值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getKeys</span>(<span class="params">obj = &#123;&#125;, keys = []</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.keys(obj).reduce(<span class="function">(<span class="params">t, v</span>) =&gt;</span> (keys.includes(v) &amp;&amp; (t[v] = obj[v]), t), &#123;&#125;)</span><br><span class="line">        &#125;</span><br><span class="line"> <span class="keyword">const</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</span><br><span class="line"> <span class="keyword">const</span> word = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;d&quot;</span>];</span><br><span class="line"> <span class="built_in">console</span>.log(getKeys(target, word)); <span class="comment">//&#123;a:1,d:4&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/10/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7reduce/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-移动端适配vw-rem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
