@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>objectCopy | lqrDream</title>
+  <title>对象拷贝 | lqrDream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="objectCopy">
-<meta property="og:url" content="http://example.com/2020/12/22/objectCopy/index.html">
+  <meta name="description" content="浅拷贝​    定义：仅仅是指向被复制的内存地址，如果原地址发生改变，那么浅复制出来的对象也会相应的改变。 深拷贝​    定义：在内存开辟一块新的空间，两个对象相互不影响 123当拷贝对象内部存储在数组或者对象，因为数组和对象存在内存的堆中，所以 使用 Object.assign() 和 ... 只能拷贝其引用地址，为浅拷贝。可以使用递归一直进行深拷贝当拷贝对象内部是string,number,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象拷贝">
+<meta property="og:url" content="http://example.com/2019/12/22/objectCopy/index.html">
 <meta property="og:site_name" content="lqrDream">
+<meta property="og:description" content="浅拷贝​    定义：仅仅是指向被复制的内存地址，如果原地址发生改变，那么浅复制出来的对象也会相应的改变。 深拷贝​    定义：在内存开辟一块新的空间，两个对象相互不影响 123当拷贝对象内部存储在数组或者对象，因为数组和对象存在内存的堆中，所以 使用 Object.assign() 和 ... 只能拷贝其引用地址，为浅拷贝。可以使用递归一直进行深拷贝当拷贝对象内部是string,number,">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-12-22T09:05:55.000Z">
-<meta property="article:modified_time" content="2020-12-22T09:05:55.633Z">
+<meta property="article:published_time" content="2019-12-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-22T09:37:56.143Z">
 <meta property="article:author" content="Liu QingRu">
 <meta name="twitter:card" content="summary">
   
@@ -155,20 +157,38 @@
         
   
     <h1 class="article-title" itemprop="name">
-      objectCopy
+      对象拷贝
     </h1>
   
 
         
-        <a href="/2020/12/22/objectCopy/" class="archive-article-date">
-  	<time datetime="2020-12-22T09:05:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
+        <a href="/2019/12/22/objectCopy/" class="archive-article-date">
+  	<time datetime="2019-12-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><p>​    定义：仅仅是指向被复制的内存地址，如果原地址发生改变，那么浅复制出来的对象也会相应的改变。</p>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p>​    定义：在内存开辟一块新的空间，两个对象相互不影响</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当拷贝对象内部存储在数组或者对象，因为数组和对象存在内存的堆中，所以 使用 <span class="built_in">Object</span>.assign() 和 ... 只能拷贝其引用地址，为浅拷贝。可以使用递归一直进行深拷贝</span><br><span class="line"></span><br><span class="line">当拷贝对象内部是string,number,boolean,执行深拷贝</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><p> 示例一：for in 递归 深拷贝 拷贝里面所有的对象或者数组 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> obj = &#123;</span><br><span class="line">            a: <span class="number">1</span>,</span><br><span class="line">            b: <span class="number">2</span>,</span><br><span class="line">            c: &#123;</span><br><span class="line">                d: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> a) &#123;</span><br><span class="line">                <span class="keyword">var</span> item = a[key];</span><br><span class="line">                <span class="keyword">if</span> (item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">                    b[key] = [];</span><br><span class="line">                    <span class="comment">// console.log(item);</span></span><br><span class="line">                    extend(item, b[key])</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (item <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">                    b[key] = &#123;&#125;;</span><br><span class="line">                    extend(item, b[key])</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    b[key] = a[key]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">extend(obj, obj2)</span><br><span class="line">obj.c[<span class="string">&#x27;d&#x27;</span>] = <span class="string">&#x27;A&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj)  <span class="comment">// 已经改变了</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2) <span class="comment">//&#123;a: 1, b: 2, c: &#123;…&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>示例二：通过JSON.stringify()进行拷贝</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> JsObj1 = &#123;</span><br><span class="line">            a: <span class="number">1</span>,</span><br><span class="line">            b: <span class="number">2</span>,</span><br><span class="line">            c: &#123;</span><br><span class="line">                d: <span class="number">3</span></span><br><span class="line">            &#125;,</span><br><span class="line">            f: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 不能拷贝 函数  会忽略undefined  symbol 不能解决循环引用的对象</span></span><br><span class="line"> <span class="keyword">let</span> JsObj = <span class="built_in">JSON</span>.stringify(JsObj1)</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(JsObj), JsObj1)</span><br></pre></td></tr></table></figure>
+
+<p>示例三：通过Object.assign 实现浅拷贝 or 深拷贝</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">           a: <span class="number">1</span>,</span><br><span class="line">           b: <span class="number">2</span>,</span><br><span class="line">           c: &#123;</span><br><span class="line">               d: <span class="number">3</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"><span class="comment">// 浅拷贝 </span></span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="built_in">Object</span>.assign(obj)</span><br><span class="line"><span class="built_in">console</span>.log(obj3, obj)</span><br><span class="line">obj3.a = <span class="string">&#x27;A&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj3, obj)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当Object.assign()合并的是空数组 表示深拷贝</span></span><br><span class="line"><span class="keyword">let</span> obj6 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj)</span><br><span class="line"><span class="built_in">console</span>.log(obj6, obj)</span><br><span class="line">obj.a = <span class="string">&#x27;B&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj6, obj)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s = &#123;</span><br><span class="line">   a: <span class="number">1</span>,</span><br><span class="line">   b: <span class="number">2</span>,</span><br><span class="line">   c: &#123; <span class="attr">d</span>: <span class="number">2</span> &#125;,</span><br><span class="line">   f: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">34</span>]</span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Object</span>.assign(&#123;&#125;, s)</span><br><span class="line"><span class="built_in">console</span>.log(s1, s)</span><br><span class="line">s.c[<span class="string">&#x27;d&#x27;</span>] = <span class="string">&#x27;A&#x27;</span>   <span class="comment">// 证明 当assign 拷贝 第二层是对象的时候是浅拷贝</span></span><br><span class="line">s.f[<span class="number">0</span>] = <span class="string">&#x27;F&#x27;</span>   <span class="comment">// 证明 当assign 拷贝 第二层是数组的时候是浅拷贝</span></span><br><span class="line">s.b = <span class="string">&#x27;B&#x27;</span>     <span class="comment">// 当拷贝对象是 string number boolean 浅拷贝</span></span><br><span class="line"><span class="built_in">console</span>.log(s1, s)</span><br></pre></td></tr></table></figure>
+
+<p>示例四：通过扩展运算符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> pp = &#123;</span><br><span class="line">        a: <span class="literal">false</span>,</span><br><span class="line">        b: <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">        c: <span class="number">123</span>,</span><br><span class="line">        d: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>]</span><br><span class="line">        &#125;</span><br><span class="line"> <span class="keyword">let</span> pp1 = &#123; ...pp &#125;</span><br><span class="line"> <span class="built_in">console</span>.log(pp1, pp)</span><br><span class="line"> pp.a = <span class="literal">true</span>;</span><br><span class="line"> <span class="built_in">console</span>.log(pp1, pp)  <span class="comment">// 一级对象深拷贝</span></span><br><span class="line"> pp.d[<span class="number">0</span>] = <span class="string">&#x27;A&#x27;</span></span><br><span class="line"> <span class="built_in">console</span>.log(pp1, pp)  <span class="comment">// 二级对象浅拷贝</span></span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -247,7 +267,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/12/22/objectCopy/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/12/22/objectCopy/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,9 +281,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/12/10/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7reduce/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数组高级reduce
+        
+      </div>
+    </a>
   
-    <a href="/2020/12/10/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7reduce/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数组高级reduce</div>
+  
+    <a href="/2019/10/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvw-rem/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动端适配vw-rem计算公式</div>
       <i class="icon-circle-right"></i>
     </a>
   
