@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2019 | lqrDream</title>
+  <title>array去重和扁平化.md | lqrDream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="lqrDream">
-<meta property="og:url" content="http://example.com/archives/2019/index.html">
+  <meta name="description" content="数组扁平化​    概念：将一个多维数组变成一个一维数组 方法一：通过concat将二维数组转化为一维数组原理：通过将扩展运算符，将数组内部展开，并通过concat连接两个字符串的方式返回一个新的数组  123let a &#x3D; [12, 3, 45, [6, 7, 8]]console.log(a)   &#x2F;&#x2F; [12, 3, 45, Array(3)]console.log([].concat(..">
+<meta property="og:type" content="article">
+<meta property="og:title" content="array去重和扁平化.md">
+<meta property="og:url" content="http://example.com/2019/12/31/array%E5%8E%BB%E9%87%8D%E5%92%8C%E6%89%81%E5%B9%B3%E5%8C%96/index.html">
 <meta property="og:site_name" content="lqrDream">
+<meta property="og:description" content="数组扁平化​    概念：将一个多维数组变成一个一维数组 方法一：通过concat将二维数组转化为一维数组原理：通过将扩展运算符，将数组内部展开，并通过concat连接两个字符串的方式返回一个新的数组  123let a &#x3D; [12, 3, 45, [6, 7, 8]]console.log(a)   &#x2F;&#x2F; [12, 3, 45, Array(3)]console.log([].concat(..">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-31T05:25:47.000Z">
+<meta property="article:modified_time" content="2020-12-31T06:52:07.585Z">
 <meta property="article:author" content="Liu QingRu">
 <meta name="twitter:card" content="summary">
   
@@ -146,103 +150,206 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-array去重和扁平化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      array去重和扁平化.md
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/31/array%E5%8E%BB%E9%87%8D%E5%92%8C%E6%89%81%E5%B9%B3%E5%8C%96/" class="archive-article-date">
+
+        
+        <a href="/2019/12/31/array%E5%8E%BB%E9%87%8D%E5%92%8C%E6%89%81%E5%B9%B3%E5%8C%96/" class="archive-article-date">
   	<time datetime="2019-12-31T05:25:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/31/array%E5%8E%BB%E9%87%8D%E5%92%8C%E6%89%81%E5%B9%B3%E5%8C%96/">array去重和扁平化.md</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数组扁平化"><a href="#数组扁平化" class="headerlink" title="数组扁平化"></a>数组扁平化</h4><p>​    概念：将一个多维数组变成一个一维数组</p>
+<h5 id="方法一：通过concat将二维数组转化为一维数组"><a href="#方法一：通过concat将二维数组转化为一维数组" class="headerlink" title="方法一：通过concat将二维数组转化为一维数组"></a>方法一：通过concat将二维数组转化为一维数组</h5><p>原理：通过将扩展运算符，将数组内部展开，并通过concat连接两个字符串的方式返回一个新的数组 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">12</span>, <span class="number">3</span>, <span class="number">45</span>, [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]]</span><br><span class="line"><span class="built_in">console</span>.log(a)   <span class="comment">// [12, 3, 45, Array(3)]</span></span><br><span class="line"><span class="built_in">console</span>.log([].concat(...a))  <span class="comment">// [12, 3, 45, 6, 7, 8]</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h5 id="方法二：使用数组方法join和字符串方法split进行数组扁平化"><a href="#方法二：使用数组方法join和字符串方法split进行数组扁平化" class="headerlink" title="方法二：使用数组方法join和字符串方法split进行数组扁平化"></a>方法二：使用数组方法join和字符串方法split进行数组扁平化</h5><p>原理：通过join方法将数组转化为以点隔开的字符串，在使用split把转化的字符串转化成字符串数组，通过。map方法将内部字符串转化数字类型的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>, [<span class="number">3</span>, <span class="number">9</span>, <span class="number">10</span>, [<span class="number">4</span>, <span class="number">6</span>, <span class="number">11</span>]]]];</span><br><span class="line"><span class="keyword">let</span> b = a.join(<span class="string">&#x27;,&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>).map(<span class="built_in">Number</span>)</span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// [4, 1, 2, 3, 6, 7, 8, 3, 9, 10, 4, 6, 11]</span></span><br></pre></td></tr></table></figure>
 
+<h5 id="方法三：通过正则方法和JSON-stringify方法和数组方法"><a href="#方法三：通过正则方法和JSON-stringify方法和数组方法" class="headerlink" title="方法三：通过正则方法和JSON.stringify方法和数组方法"></a>方法三：通过正则方法和JSON.stringify方法和数组方法</h5><p>原理：首先将数组转化为字符串 使用字符串匹配正则规则 替换所有的 ‘[‘  ‘]’ 和方法二类似 split 主要是讲字符串转化为数组，map将字符串数组转化为数字 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>, [<span class="number">3</span>, <span class="number">9</span>, <span class="number">10</span>, [<span class="number">4</span>, <span class="number">6</span>, <span class="number">11</span>]]]];</span><br><span class="line"><span class="keyword">let</span> c = <span class="built_in">JSON</span>.stringify(a).replace(<span class="regexp">/\[|\]/g</span>, <span class="string">&#x27;&#x27;</span>).split(<span class="string">&#x27;,&#x27;</span>).map(<span class="built_in">Number</span>);</span><br><span class="line"><span class="built_in">console</span>.log(c) <span class="comment">// [4, 1, 2, 3, 6, 7, 8, 3, 9, 10, 4, 6, 11]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法四：函数递归"><a href="#方法四：函数递归" class="headerlink" title="方法四：函数递归"></a>方法四：函数递归</h5><p>原理：判断获取的当前值是不是数组，是数组就递归调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> d = [];</span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(arr[i])) &#123;</span><br><span class="line">         fn(arr[i]);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	d.push(arr[i]);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">fn(a)</span><br><span class="line"><span class="built_in">console</span>.log(d) <span class="comment">// [4, 1, 2, 3, 6, 7, 8, 3, 9, 10, 4, 6, 11]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法五：通过reduce方法进行数组扁平化"><a href="#方法五：通过reduce方法进行数组扁平化" class="headerlink" title="方法五：通过reduce方法进行数组扁平化"></a>方法五：通过reduce方法进行数组扁平化</h5><p>原理：主要是通过reduce的依次执行，判断当前拿到的对象是不是数组， 是数组就进行一次函数递归将内部所有数组扁平化（与方法四类似）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>, [<span class="number">3</span>, <span class="number">9</span>, <span class="number">10</span>, [<span class="number">4</span>, <span class="number">6</span>, <span class="number">11</span>]]]]; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">result, item</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(result, item); <span class="comment">// 查看结果你会发现，把每个数组进行拆分并取出</span></span><br><span class="line">          <span class="keyword">return</span> result.concat(<span class="built_in">Array</span>.isArray(item) ? flatten(item) : item); </span><br><span class="line">        &#125;, []);</span><br><span class="line">     &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(flatten(a)) <span class="comment">// [4, 1, 2, 3, 6, 7, 8, 3, 9, 10, 4, 6, 11]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法六：ES6新增方法flat"><a href="#方法六：ES6新增方法flat" class="headerlink" title="方法六：ES6新增方法flat()"></a>方法六：ES6新增方法flat()</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>, [<span class="number">3</span>, <span class="number">9</span>, <span class="number">10</span>, [<span class="number">4</span>, <span class="number">6</span>, <span class="number">11</span>]]]]; </span><br><span class="line"><span class="keyword">let</span> e = a.flat()   <span class="comment">// 不传参的时候 表示将二维数组转一维数组</span></span><br><span class="line"><span class="built_in">console</span>.log(e)     <span class="comment">// [4, 1, 2, 3, 6, 7, 8, Array(4)]</span></span><br><span class="line"><span class="keyword">let</span> f = a.flat(<span class="number">2</span>)  <span class="comment">// 传入2 表示将两层嵌套数组 转化为一维数组</span></span><br><span class="line"><span class="built_in">console</span>.log(f)     <span class="comment">// [4, 1, 2, 3, 6, 7, 8, 3, 9, 10, Array(3)]</span></span><br><span class="line"><span class="keyword">let</span> g = a.flat(<span class="literal">Infinity</span>) <span class="comment">// Infinity 使用这个关键字可以将所包含的所谓数组转化为一维数组</span></span><br><span class="line"><span class="built_in">console</span>.log(g)     <span class="comment">// [4, 1, 2, 3, 6, 7, 8, 3, 9, 10, 4, 6, 11]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h4><p>概念：去除数组中重复重新的值</p>
+<h5 id="方法一：循环遍历截取"><a href="#方法一：循环遍历截取" class="headerlink" title="方法一：循环遍历截取"></a>方法一：循环遍历截取</h5><p>原理:通过每次循环遍历比较当前值在不在数组中，在就删除当前值并且索引减一，弊端，会改变原数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">removeDuplicatedItem</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">              <span class="keyword">if</span> (arr[i] === arr[j]) &#123;</span><br><span class="line">                  arr.splice(j, <span class="number">1</span>);<span class="comment">//console.log(arr[j]);</span></span><br><span class="line">                  j--;</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">let</span> arr2 = removeDuplicatedItem(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法二：借助indexOf-方法"><a href="#方法二：借助indexOf-方法" class="headerlink" title="方法二：借助indexOf()方法"></a>方法二：借助indexOf()方法</h5><p>原理：判断此元素在该数组中首次出现的位置下标与循环的下标是否相等 与方法一类似</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>];</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">rep2</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">                <span class="comment">// console.log(arr.indexOf(arr[i])); 可以输出当前元素首次出现的索引</span></span><br><span class="line">                <span class="keyword">if</span> (arr.indexOf(arr[i]) !== i) &#123;</span><br><span class="line">                    arr.splice(i, <span class="number">1</span>);<span class="comment">//删除数组元素后数组长度减1后面的元素前移</span></span><br><span class="line">                    i--;<span class="comment">//数组下标回退</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arr;</span><br><span class="line">        &#125;</span><br><span class="line"> <span class="keyword">let</span> arr2 = rep2(arr);</span><br><span class="line"> <span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br><span class="line"> <span class="built_in">console</span>.log(arr2); <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法三：借助新数组和indexOf-方法"><a href="#方法三：借助新数组和indexOf-方法" class="headerlink" title="方法三：借助新数组和indexOf()方法"></a>方法三：借助新数组和indexOf()方法</h5><p>原理：通过indexOf方判断当前元素在数组中的索引如果与循环的下标相等则添加到新数组中 原数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  arr = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>];</span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">rep</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">let</span> ret = [];</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">               <span class="keyword">if</span> (arr.indexOf(arr[i]) == i) &#123;</span><br><span class="line">                   ret.push(arr[i]);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">          <span class="keyword">return</span> ret;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="keyword">let</span> arr2 = rep(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 23, 1, 1, 1, 3, 23, 5, 6, 7, 9, 9, 8, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法四：借助空对象"><a href="#方法四：借助空对象" class="headerlink" title="方法四：借助空对象"></a>方法四：借助空对象</h5><p>原理：通过对象来记录新数组中已存储过的元素 不改变原数组 与方法三类似</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>];</span><br><span class="line"> <span class="keyword">let</span> o = &#123;&#125;;</span><br><span class="line"> <span class="keyword">let</span> arr2 = [];</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">     <span class="keyword">var</span> k = arr[i];</span><br><span class="line">     <span class="keyword">if</span> (!o[k]) &#123;</span><br><span class="line">        o[k] = <span class="literal">true</span>;</span><br><span class="line">        arr2.push(k);</span><br><span class="line">       &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 23, 1, 1, 1, 3, 23, 5, 6, 7, 9, 9, 8, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法五：filter方法"><a href="#方法五：filter方法" class="headerlink" title="方法五：filter方法"></a>方法五：filter方法</h5><p>原理：查找当前元素索引出现的位置是否与当前元素索引值相等，是表示true返回 ，如果当前元素索引不等与当前索引，说明已经出现过，出现过就不返回。 原数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = arr.filter(<span class="function"><span class="keyword">function</span> (<span class="params">element, index, array</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> array.indexOf(element) === index;</span><br><span class="line">        &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 23, 1, 1, 1, 3, 23, 5, 6, 7, 9, 9, 8, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法六：使用include方法"><a href="#方法六：使用include方法" class="headerlink" title="方法六：使用include方法"></a>方法六：使用include方法</h5><p>原理：与indexOf类似，判断当前元素是否存在，不存在就添加  不改变原数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rep</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> res = [];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">         <span class="keyword">if</span> (!res.includes(arr[i])) res.push(arr[i]);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 23, 1, 1, 1, 3, 23, 5, 6, 7, 9, 9, 8, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(rep()); <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="方法七：es6-新增数据结构-new-Set-方法"><a href="#方法七：es6-新增数据结构-new-Set-方法" class="headerlink" title="方法七：es6 新增数据结构 new Set()方法"></a>方法七：es6 新增数据结构 new Set()方法</h5><p>原理：new Set() 的成员具有唯一性，不能重复</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">23</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">23</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="keyword">new</span> <span class="built_in">Set</span>(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">// [1, 23, 1, 1, 1, 3, 23, 5, 6, 7, 9, 9, 8, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(rep()); <span class="comment">// [1, 23, 3, 5, 6, 7, 9, 8]</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/12/31/array%E5%8E%BB%E9%87%8D%E5%92%8C%E6%89%81%E5%B9%B3%E5%8C%96/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/22/objectCopy/" class="archive-article-date">
-  	<time datetime="2019-12-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/12/10/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7reduce/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数组高级reduce
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/22/objectCopy/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对象拷贝</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/22/objectCopy/">对象拷贝</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvw-rem/" class="archive-article-date">
-  	<time datetime="2019-10-03T10:58:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8Dvw-rem/">移动端适配vw-rem计算公式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -266,8 +373,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
